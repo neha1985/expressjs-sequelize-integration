@@ -1,0 +1,31 @@
+{
+  "name": "nodejs-sequelize-integration",
+  "version": "1.0.0",
+  "description": "Integration of Mysql with express js project using sequelise",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neha1985/expressjs-sequelize-integration.git"
+  },
+  "keywords": [
+    "ExpressJs",
+    "Nodejs",
+    "Sequelize",
+    "Mysql"
+  ],
+  "author": "Neha Gupta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/neha1985/expressjs-sequelize-integration/issues"
+  },
+  "homepage": "https://github.com/neha1985/expressjs-sequelize-integration#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "mysql2": "^1.1.2",
+    "sequelize": "^3.29.0"
+  }
+}
