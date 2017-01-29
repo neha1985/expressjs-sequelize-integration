@@ -1,27 +1,30 @@
 const express = require('express'),
+    bodyParser = require('body-parser'),
     path = require('path'),
     exphbs = require('express-handlebars'),
-    config = require('./config'),
-    Sequelize = require('sequelize'),
-    mysql = require('mysql2');
+    http = require('http');
 
 var app = express();
 
-// view engine setup(express-handlebars)
-app.engine('.hbs', exphbs({ extname: '.hbs' }));
-app.set('view engine', '.hbs');
+//application/json
+app.use(bodyParser.json());
+//x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
 
-var sequelize = new Sequelize('mysql://root:root@localhost:3306/testdb1');
+
+app.use('/', require('./routes/webRoutes'));
+app.use(express.static(path.join(__dirname, './node_modules')));
+
+// view engine setup(express-handlebars)
+app.engine('.hbs', exphbs({ defaultLayout: 'main', extname: ".hbs", layoutsDir: "./views/layout" }));
+app.set('view engine', '.hbs');
+app.set('views', './views');
 
 var port = process.env.PORT || '3000';
 app.set('port', port);
 
-app.sequelize.sync().done(() => {
-    http.createServer(app)
-        .listen(app.get('port'), () => {
-            console.log(`Server - Port ${app.get('port')}`);
-        });
+app.listen(port, () => {
+    console.log(`Server is running at http://localhost:${port}`);
 });
-
 
 module.exports = app;

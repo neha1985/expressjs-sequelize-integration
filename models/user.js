@@ -1,38 +1,19 @@
-module.exports = (sequelize, DataType) => {
-    const User = sequelize.define('User', {
-        id: {
-            type: DataType.INTEGER,
-            primaryKey: true,
-            autoIncrement: true,
-        },
-        name: {
-            type: DataType.STRING,
-            allowNull: false,
-            validate: {
-                notEmpty: true,
-            },
-        },
-        password: {
-            type: DataType.STRING,
-            allowNull: false,
-            validate: {
-                notEmpty: true,
-            },
-        },
-        email: {
-            type: DataType.STRING,
-            unique: true,
-            allowNull: false,
-            validate: {
-                notEmpty: true,
-            },
-        },
-    }, {
-        classMethods: {
-            associate: models => {
-                User.hasMany(models.History);
-            },
-        },
-    });
-    return User;
-};
+const Sequelize = require("sequelize");
+const sequelize = require("../config/db");
+
+let user = sequelize.define('user', {
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
+    },
+    name: Sequelize.STRING,
+    address: Sequelize.STRING,
+    email: Sequelize.STRING,
+    phone: Sequelize.INTEGER,
+}, {
+    freezeTableName: true,
+    timestamps: false // Model tableName will be the same as the model name
+});
+
+module.exports = user;
