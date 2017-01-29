@@ -23,8 +23,11 @@
   },
   "homepage": "https://github.com/neha1985/expressjs-sequelize-integration#readme",
   "dependencies": {
+    "bootstrap": "^3.3.7",
     "express": "^4.14.0",
     "express-handlebars": "^3.0.0",
+    "live-server": "^1.2.0",
+    "mysql": "^2.12.0",
     "mysql2": "^1.1.2",
     "sequelize": "^3.29.0"
   }
